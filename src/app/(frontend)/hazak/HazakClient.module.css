@@ -1,0 +1,344 @@
+.page {
+  padding: 4rem 0 6rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.headerLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/* ── OLDALSÁV ── */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 88px;
+}
+
+.sidebarInner {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sidebarTitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.resetBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  text-decoration: underline;
+  padding: 0;
+  font-family: inherit;
+}
+
+.searchInput {
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: 0.4rem 0.75rem;
+  width: 100%;
+  font-size: 0.875rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+/* ── SZŰRŐ SZEKCIÓ ── */
+.filterSection {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.875rem 0;
+}
+
+.filterSectionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  padding: 0;
+  font-family: inherit;
+}
+
+.filterSectionArrow {
+  color: var(--color-stone);
+  font-size: 0.65rem;
+}
+
+.filterSectionContent {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── CHECKBOX ── */
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--color-text);
+  transition: color 0.15s;
+}
+
+.checkLabel:hover {
+  color: var(--color-accent);
+}
+
+.checkLabelActive {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.checkbox {
+  accent-color: var(--color-accent);
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── INPUT ── */
+.input {
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: 0.4rem 0.75rem;
+  width: 100%;
+  font-size: 0.875rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+}
+
+.inputRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputLabel {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+}
+
+/* ── LISTA ── */
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultCount {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 6rem 0;
+  color: var(--color-muted);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.emptyResetBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-accent);
+  text-decoration: underline;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  font-family: inherit;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── KÁRTYA ── */
+.card {
+  display: block;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.cardImage {
+  height: 200px;
+  background-color: #D4CFC6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cardImageLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--color-stone);
+  text-transform: uppercase;
+}
+
+.cardBadge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  padding: 1.25rem;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cardStat {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: 0.4rem 0.25rem;
+  text-align: center;
+}
+
+.cardStatValue {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.cardStatLabel {
+  font-size: 0.65rem;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardPrice {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.cardLink {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── RESZPONZÍV ── */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+}

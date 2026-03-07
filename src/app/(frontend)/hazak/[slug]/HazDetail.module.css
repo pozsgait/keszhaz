@@ -1,0 +1,389 @@
+.page {
+  padding: 4rem 0 6rem;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-bottom: 2.5rem;
+}
+
+.breadcrumbLink {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-accent);
+}
+
+.breadcrumbSep {
+  color: var(--color-border);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-text);
+}
+
+/* ── FEJLÉC ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  flex: 1;
+}
+
+.headerLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.75rem;
+}
+
+.shortDesc {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  max-width: 60ch;
+  line-height: 1.8;
+}
+
+.headerRight {
+  text-align: right;
+}
+
+.price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.priceLabel {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* ── KÉP GALÉRIA ── */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.galleryMain {
+  grid-column: 1 / -1;
+  height: 420px;
+  background-color: #D4CFC6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-stone);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+
+.galleryMain img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.galleryThumb {
+  height: 200px;
+  background-color: #D4CFC6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-stone);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.galleryThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── TARTALOM ── */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+/* ── ADATOK RÁCS ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.statCard {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.statValue {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── LEÍRÁS ── */
+.descSection {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.descText {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-text);
+}
+
+/* ── ALAPRAJZ ── */
+.floorPlans {
+  margin-bottom: 3rem;
+}
+
+.floorPlanGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.floorPlanItem {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.floorPlanImage {
+  height: 200px;
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.floorPlanImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.floorPlanLabel {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+/* ── MŰSZAKI ADATOK OLDALSÁV ── */
+.sidebar {
+  position: sticky;
+  top: 88px;
+}
+
+.sidebarCard {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebarCardTitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dataRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+
+.dataRow:last-child {
+  border-bottom: none;
+}
+
+.dataLabel {
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
+.dataValue {
+  color: var(--color-dark);
+  font-weight: 500;
+  text-align: right;
+}
+
+.dataValueAccent {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── CTA ── */
+.cta {
+  background-color: var(--color-dark);
+  border-radius: 4px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.ctaTitle {
+  color: #F5F2ED;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ctaText {
+  color: #A09B94;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.ctaBtn {
+  display: block;
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 2px;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s;
+}
+
+.ctaBtn:hover {
+  background-color: var(--color-accent-lt);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--color-accent);
+}
+
+/* ── RESZPONZÍV ── */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .galleryMain {
+    height: 280px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .headerRight {
+    text-align: left;
+  }
+}
