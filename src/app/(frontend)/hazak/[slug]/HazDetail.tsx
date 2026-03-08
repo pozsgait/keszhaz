@@ -1,11 +1,17 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './HazDetail.module.css'
+import type { House, Media } from '@/payload-types'
 
 function formatPrice(price: number) {
   return new Intl.NumberFormat('hu-HU', {
     style: 'currency', currency: 'HUF', maximumFractionDigits: 0,
   }).format(price)
+}
+
+function getMedia(raw: number | Media | null | undefined): Media | null {
+  if (!raw || typeof raw === 'number') return null
+  return raw
 }
 
 const roofLabels: Record<string, string> = {
@@ -33,65 +39,16 @@ const priceCategoryLabels: Record<string, string> = {
   premium: 'Prémium', luxury: 'Luxus',
 }
 
-type MediaItem = {
-  url?: string
-  alt?: string
-  width?: number
-  height?: number
-}
-
-type ImageEntry = {
-  image?: MediaItem | null
-  caption?: string
-}
-
-type FloorPlanEntry = {
-  image?: MediaItem | null
-  label?: string
-}
-
-type House = {
-  id: string
-  name: string
-  slug: string
-  shortDescription?: string | null  // ← null hozzáadva
-  description?: unknown
-  area: number
-  builtArea?: number | null
-  rooms: number
-  bathrooms: number
-  floors: number
-  priceFrom?: number | null
-  priceCategory?: string | null
-  category?: string | null
-  style?: string[] | null
-  roofType?: string | null
-  wallStructure?: string | null
-  heating?: string[] | null
-  cooling?: string[] | null
-  energyRating?: string | null
-  minPlotSize?: number | null
-  minPlotWidth?: number | null
-  terraceSize?: number | null
-  masterBathroom?: boolean | null
-  wardrobe?: boolean | null
-  chimney?: boolean | null
-  featured?: boolean | null
-  images?: ImageEntry[] | null
-  floorPlans?: FloorPlanEntry[] | null
-}
-
 export function HazDetail({ house }: { house: House }) {
   const images = house.images ?? []
   const floorPlans = house.floorPlans ?? []
-  const mainImage = images[0]?.image
+  const mainImage = getMedia(images[0]?.image)
   const thumbs = images.slice(1, 3)
 
   return (
     <div className="container">
       <div className={styles.page}>
 
-        {/* BREADCRUMB */}
         <nav className={styles.breadcrumb}>
           <Link href="/" className={styles.breadcrumbLink}>Főoldal</Link>
           <span className={styles.breadcrumbSep}>›</span>
@@ -100,7 +57,6 @@ export function HazDetail({ house }: { house: House }) {
           <span className={styles.breadcrumbCurrent}>{house.name}</span>
         </nav>
 
-        {/* FEJLÉC */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <p className={styles.headerLabel}>
@@ -124,7 +80,6 @@ export function HazDetail({ house }: { house: House }) {
           </div>
         </div>
 
-        {/* GALÉRIA */}
         <div className={styles.gallery}>
           <div className={styles.galleryMain}>
             {mainImage?.url ? (
@@ -138,24 +93,26 @@ export function HazDetail({ house }: { house: House }) {
               <span>Látványterv</span>
             )}
           </div>
-          {thumbs.map((t, i) => (
-            <div key={i} className={styles.galleryThumb}>
-              {t.image?.url ? (
-                <Image
-                  src={t.image.url}
-                  alt={t.caption ?? `${house.name} ${i + 2}`}
-                  width={600}
-                  height={200}
-                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                />
-              ) : (
-                <span>Látványterv</span>
-              )}
-            </div>
-          ))}
+          {thumbs.map((t, i) => {
+            const img = getMedia(t.image)
+            return (
+              <div key={i} className={styles.galleryThumb}>
+                {img?.url ? (
+                  <Image
+                    src={img.url}
+                    alt={t.caption ?? `${house.name} ${i + 2}`}
+                    width={600}
+                    height={200}
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  />
+                ) : (
+                  <span>Látványterv</span>
+                )}
+              </div>
+            )
+          })}
         </div>
 
-        {/* FŐ ADATOK */}
         <div className={styles.statsGrid}>
           {[
             { value: `${house.area} m²`, label: 'Alapterület' },
@@ -174,10 +131,8 @@ export function HazDetail({ house }: { house: House }) {
           ))}
         </div>
 
-        {/* TARTALOM + OLDALSÁV */}
         <div className={styles.content}>
           <div>
-            {/* LEÍRÁS */}
             {house.shortDescription && (
               <div className={styles.descSection}>
                 <h2 className={styles.sectionTitle}>A házról</h2>
@@ -185,41 +140,41 @@ export function HazDetail({ house }: { house: House }) {
               </div>
             )}
 
-            {/* ALAPRAJZOK */}
             {floorPlans.length > 0 && (
               <div className={styles.floorPlans}>
                 <h2 className={styles.sectionTitle}>Alaprajzok</h2>
                 <div className={styles.floorPlanGrid}>
-                  {floorPlans.map((fp, i) => (
-                    <div key={i} className={styles.floorPlanItem}>
-                      <div className={styles.floorPlanImage}>
-                        {fp.image?.url ? (
-                          <Image
-                            src={fp.image.url}
-                            alt={fp.label ?? `Alaprajz ${i + 1}`}
-                            width={400}
-                            height={300}
-                            style={{ objectFit: 'contain' }}
-                          />
-                        ) : (
-                          <span>Alaprajz</span>
+                  {floorPlans.map((fp, i) => {
+                    const fpImg = getMedia(fp.image)
+                    return (
+                      <div key={i} className={styles.floorPlanItem}>
+                        <div className={styles.floorPlanImage}>
+                          {fpImg?.url ? (
+                            <Image
+                              src={fpImg.url}
+                              alt={fp.label ?? `Alaprajz ${i + 1}`}
+                              width={400}
+                              height={300}
+                              style={{ objectFit: 'contain' }}
+                            />
+                          ) : (
+                            <span>Alaprajz</span>
+                          )}
+                        </div>
+                        {fp.label && (
+                          <div className={styles.floorPlanLabel}>{fp.label}</div>
                         )}
                       </div>
-                      {fp.label && (
-                        <div className={styles.floorPlanLabel}>{fp.label}</div>
-                      )}
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
             )}
           </div>
 
-          {/* OLDALSÁV – MŰSZAKI ADATOK */}
           <aside className={styles.sidebar}>
             <div className={styles.sidebarCard}>
               <div className={styles.sidebarCardTitle}>Műszaki adatok</div>
-
               {house.roofType && (
                 <div className={styles.dataRow}>
                   <span className={styles.dataLabel}>Tető típusa</span>
@@ -294,7 +249,6 @@ export function HazDetail({ house }: { house: House }) {
               </div>
             </div>
 
-            {/* CTA */}
             <div className={styles.cta}>
               <h3 className={styles.ctaTitle}>Érdekli ez a ház?</h3>
               <p className={styles.ctaText}>
