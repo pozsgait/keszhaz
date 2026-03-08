@@ -20,7 +20,8 @@ const collections: CollectionSlug[] = [
   'search',
 ]
 
-const globals: GlobalSlug[] = ['header', 'footer']
+//const globals: GlobalSlug[] = ['header', 'footer']
+const globals: GlobalSlug[] = []
 
 const categories = ['Technology', 'News', 'Finance', 'Design', 'Software', 'Engineering']
 
@@ -44,7 +45,7 @@ export const seed = async ({
   payload.logger.info(`— Clearing collections and globals...`)
 
   // clear the database
-  await Promise.all(
+  /*await Promise.all(
     globals.map((global) =>
       payload.updateGlobal({
         slug: global,
@@ -57,7 +58,7 @@ export const seed = async ({
         },
       }),
     ),
-  )
+  )*/
 
   await Promise.all(
     collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),

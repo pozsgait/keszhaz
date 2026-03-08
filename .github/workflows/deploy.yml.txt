@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy SSH-n
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/m108-teszt/htdocs/teszt.m108.eu
+            git pull origin main
+            npm ci
+            npm run build
+            cp -r .next/static .next/standalone/.next/static
+            cp -r public .next/standalone/public
+            pm2 restart keszhaz || pm2 start ecosystem.config.js
+            pm2 save

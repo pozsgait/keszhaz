@@ -51,33 +51,34 @@ type FloorPlanEntry = {
 }
 
 type House = {
+  id: string
   name: string
   slug: string
-  shortDescription?: string
+  shortDescription?: string | null  // ← null hozzáadva
   description?: unknown
   area: number
-  builtArea?: number
+  builtArea?: number | null
   rooms: number
   bathrooms: number
   floors: number
-  priceFrom?: number
-  priceCategory?: string
-  category?: string
-  style?: string[]
-  roofType?: string
-  wallStructure?: string
-  heating?: string[]
-  cooling?: string[]
-  energyRating?: string
-  minPlotSize?: number
-  minPlotWidth?: number
-  terraceSize?: number
-  masterBathroom?: boolean
-  wardrobe?: boolean
-  chimney?: boolean
-  featured?: boolean
-  images?: ImageEntry[]
-  floorPlans?: FloorPlanEntry[]
+  priceFrom?: number | null
+  priceCategory?: string | null
+  category?: string | null
+  style?: string[] | null
+  roofType?: string | null
+  wallStructure?: string | null
+  heating?: string[] | null
+  cooling?: string[] | null
+  energyRating?: string | null
+  minPlotSize?: number | null
+  minPlotWidth?: number | null
+  terraceSize?: number | null
+  masterBathroom?: boolean | null
+  wardrobe?: boolean | null
+  chimney?: boolean | null
+  featured?: boolean | null
+  images?: ImageEntry[] | null
+  floorPlans?: FloorPlanEntry[] | null
 }
 
 export function HazDetail({ house }: { house: House }) {
