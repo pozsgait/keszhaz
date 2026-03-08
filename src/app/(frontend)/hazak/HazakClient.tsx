@@ -1,6 +1,6 @@
 'use client'
 
-mport { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import styles from './HazakClient.module.css'
 import type { House } from '@/payload-types'
