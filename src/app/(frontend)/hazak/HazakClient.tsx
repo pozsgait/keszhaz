@@ -108,8 +108,8 @@ export function HazakClient({ houses }: Props) {
     if (minArea && h.area < Number(minArea)) return false
     if (maxArea && h.area > Number(maxArea)) return false
     if (minRooms && h.rooms < Number(minRooms)) return false
-    if (minBathrooms && h.bathrooms < Number(minBathrooms)) return false
-    if (minFloors && h.floors < Number(minFloors)) return false
+    if (minBathrooms && (h.bathrooms ?? 0) < Number(minBathrooms)) return false
+    if (minFloors && (h.floors ?? 0) < Number(minFloors)) return false
     if (minTerrace && (h.terraceSize || 0) < Number(minTerrace)) return false
     if (onlyFeatured && !h.featured) return false
     if (onlyMasterBath && !h.masterBathroom) return false
