@@ -1,3 +1,4 @@
+import type { House } from './payload-types'
 import dotenv from 'dotenv'
 import path from 'path'
 dotenv.config({ path: path.resolve(process.cwd(), '.env') })
@@ -8,7 +9,7 @@ console.log('DB:', process.env.DATABASE_URI)
 import payload from 'payload'
 import config from './payload.config'
 
-const houses = [
+const houses: Partial<House>[] = [
   {
     name: 'Napfény 95',
     slug: 'napfeny-95',
@@ -340,16 +341,14 @@ async function seed() {
 
   console.log('🌱 Seed indítása...')
 
-  // Meglévő házak törlése
   const existing = await payload.find({ collection: 'houses', limit: 100 })
   for (const house of existing.docs) {
     await payload.delete({ collection: 'houses', id: house.id })
   }
   console.log('🗑️  Régi adatok törölve')
 
-  // Új házak feltöltése
   for (const house of houses) {
-    await payload.create({ collection: 'houses', data: house })
+    await payload.create({ collection: 'houses', data: house as any })
     console.log(`✅ ${house.name} létrehozva`)
   }
 
