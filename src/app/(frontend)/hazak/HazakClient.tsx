@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+mport { useState, useMemo } from 'react'
 import Link from 'next/link'
 import styles from './HazakClient.module.css'
+import type { House } from '@/payload-types'
 
+/*
 type House = {
   id: string
   name: string
@@ -30,8 +32,10 @@ type House = {
   minPlotWidth?: number
   wallStructure?: string
 }
-
+*/
 type Props = { houses: House[] }
+
+
 
 function formatPrice(price: number) {
   return new Intl.NumberFormat('hu-HU', {
