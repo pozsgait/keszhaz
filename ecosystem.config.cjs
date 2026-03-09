@@ -1,0 +1,15 @@
+module.exports = {
+  apps: [
+    {
+      name: 'keszhaz',
+      script: 'node',
+      args: 'server.js',
+      cwd: '/home/m108-teszt/htdocs/teszt.m108.eu/.next/standalone',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3000,
+        HOSTNAME: '0.0.0.0',
+      },
+    },
+  ],
+}

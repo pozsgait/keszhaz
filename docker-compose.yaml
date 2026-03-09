@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: payload-db2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: payload2
+      POSTGRES_USER: payload2
+      POSTGRES_PASSWORD: Tanulo123
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata2:/var/lib/postgresql/data
+
+volumes:
+  pgdata2:
